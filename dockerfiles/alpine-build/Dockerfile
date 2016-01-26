@@ -4,7 +4,7 @@ MAINTAINER Gregoire Lejeune <gregoire.lejeune@free.fr>
 ENV OTP_VERSION 18.2.1
 ENV ELIXIR_VERSION v1.2.1
 
-RUN apk --update add git autoconf build-base perl-dev zlib-dev ncurses-dev openssl-dev unixodbc-dev wget grep nodejs
+RUN apk --update add git autoconf build-base perl-dev zlib-dev ncurses-dev openssl-dev unixodbc-dev wget grep nodejs openssh
 
 # Install Erlang
 RUN curl -O https://raw.githubusercontent.com/yrashk/kerl/master/kerl
