@@ -1,14 +1,14 @@
-FROM alpine:3.3
+FROM alpine:3.6
 MAINTAINER Gregoire Lejeune <gregoire.lejeune@free.fr>
 
-ENV OTP_VERSION 18.2.1
-ENV ELIXIR_VERSION v1.2.1
+ENV OTP_VERSION 20.1
+ENV ELIXIR_VERSION v1.5.2
 
-RUN apk --update add git autoconf build-base perl-dev zlib-dev ncurses-dev openssl-dev unixodbc-dev wget grep nodejs openssh-client
+RUN apk --update add git autoconf build-base perl-dev zlib-dev ncurses-dev openssl-dev unixodbc-dev wget grep nodejs openssh-client curl
 
 # Install Erlang
 RUN curl -O https://raw.githubusercontent.com/yrashk/kerl/master/kerl
-RUN chmod +x kerl 
+RUN chmod +x kerl
 ENV KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac --enable-shared-zlib --enable-dynamic-ssl-lib --enable-hipe --enable-smp-support --enable-threads --enable-kernel-poll"
 RUN ./kerl update releases && ./kerl build ${OTP_VERSION} ${OTP_VERSION}-bu && ./kerl install ${OTP_VERSION}-bu ~/.kerl/installs/${OTP_VERSION}-bu
 
